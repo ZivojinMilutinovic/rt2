@@ -1,4 +1,4 @@
-class UsersController < ApplicationRecord
+class UsersController < ApplicationController
     def new
         render :new
     end
@@ -12,6 +12,7 @@ class UsersController < ApplicationRecord
             render :new
         end
     end
+    private
     def users_params
         params[:user].permit(:username,:email,:password)
     end

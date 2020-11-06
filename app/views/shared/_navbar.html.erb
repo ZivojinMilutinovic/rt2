@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Knigovodstveni sistem</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Pocetna</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Tehnicka podrska</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/kontrolni_broj">Kontrolni broj</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Kontni okvir
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Konto1 Klasa</a>
+          <a class="dropdown-item" href="#">Konto2 Grupa</a>
+          <a class="dropdown-item" href="#">Konto3 Sintetika</a>
+          <a class="dropdown-item" href="#">Konto4 Objekti prometa</a>
+          <a class="dropdown-item" href="#">Konto5 Racuni</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+    <%if current_user%>
+  <span>Dobrodosao  <%=current_user.username%></span>
+  <%= button_to  "Log out", session_url,method: :delete %>
+  <%else%>
+   <a class="nav-link" href="<%=new_session_url %>">Log in</a>
+   <a class="nav-link" href="<%=new_user_url%>">Register</a>
+  <%end%>
+    </ul>
+  </div>
+</nav>

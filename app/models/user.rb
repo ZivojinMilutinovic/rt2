@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     attr_reader :password
     before_validation :ensure_session_token
-    validates :username,:email,:password,presence:{message:"moraju biti prisutni"}
+    validates :username,:email,:password_digest,presence:{message:"moraju biti prisutni"}
     validates :password,length:{minimum:6,allow_nil:true}
     def self.find_by_credientials(username,password)
         user=User.find_by(username:username)
@@ -9,7 +9,7 @@ class User < ApplicationRecord
         user.is_password?(password) ? user : nil
     end
     def is_password?(password)
-        BCrypt::Password.new(self.password_digest).is_password?(self.password)
+        BCrypt::Password.new(self.password_digest).is_password?(password)
     end
     def password=(password)
         @password=password
@@ -20,6 +20,7 @@ class User < ApplicationRecord
     end
     def reset_session_token!
         self.session_token=self.class.generate_session_token
+        self.save!
         self.session_token
     end
     private

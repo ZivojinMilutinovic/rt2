@@ -1,0 +1,36 @@
+<h1 class="mb-3">Izracunavanje kontrolnog broja</h1>
+<form action="/kontrolni_broj" method="GET">
+<label for="broj">Broj:</label>
+<input type="text" name="broj" id="broj">
+<input type="submit" class="btn btn-danger" value="mod97">
+<label for="kontrolni_broj">Kontrolni broj:</label>
+<input type="text" id="kontrolni_broj" value="<%=@kontrolni_broj%>">
+<span><%=flash.now[:errors] %></span>
+</form>
+<div>
+UPUTSTVO ZA KORISTENJE PROGRAMA ZA RACUNANJE KONTROLNOG BROJA 
+                                                       PO MODELU 97 
+
+
+   Kada pokrenete program, u formu koja se pojavi upisite vas poziv na broj, a zatim 
+ kliknite misem na dugme: Izracunaj. Ukoliko ste vas poziv na broj upisali sa ciframa i 
+ slovima koja su dopustena u pozivu na broj, program ce izracunati kontrolni broj, a u grupi 
+ podataka u drugom redu fome bice prikazano kako kontrolni broj i vas poziv na broj treba da 
+ upisete na instrument platnog prometa. 
+
+   Ukoliko u vasem pozivu na broj imate i slova koja su dopustena, nije potrebno da slova 
+ konvertujete u brojeve prema tabeli koju je utvrdila Narodna banka Srbije, vec vas poziv na 
+ broj mozete jednostavno upisati sa brojevima i dopustenim slovima, a program konvertuje 
+ slova u cifre i izracunava kontrolni broj. 
+
+   Ukoliko u vasem pozivu na broj imate crtica i razmaka, poziv na broj u program se unosi 
+ bez crtica i bez razmaka. 
+
+   Za izracunavanje kontrolnog broja za vas sledeci poziv na broj, prvo kliknite na dugme: 
+ Izbrisi polja, a zatim ponovite postupak. 
+
+   U nizu znakova poziva na broj mogu se koristiti: 
+   
+ - cifre: 1; 2; 3; 4; 5; 6; 7; 8; 9 i 0; 
+ - latinicna slova: A; B; C; D; E; F; G; H; I; J; K; L; M; N; O; P; Q; R; S; T; U; V; W; X; Y; Z 
+</div>
