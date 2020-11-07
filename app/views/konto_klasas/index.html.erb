@@ -1,0 +1,29 @@
+
+
+<table id="example" class="data-table table table-striped table-bordered w-100 ">
+        <thead>
+            <tr>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            </tr>
+        </thead>
+        <tbody>
+            <% @konto_klase.each do |klasa| %>
+                <tr>
+                <td><%=klasa.id %></td>
+                <td><%=klasa.naziv %></td>
+                <td><%=klasa.klasa %></td>
+                <td><%=klasa.bilans %></td>
+                <td><%=klasa.aktivnost %></td>
+                </tr>
+            <%end %>
+        </tbody>
+        <tfoot>
+            <tr>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            </tr>
+        </tfoot>
+    </table>

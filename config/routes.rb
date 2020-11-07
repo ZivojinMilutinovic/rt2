@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   root 'pages#index'
   get '/kontrolni_broj',to: 'pages#kontrolni_broj'
   resources :users,only:[:new,:create]
-  resource :session,only:[:new,:create,:destroy]
+  resources :session,only:[:new,:create,:destroy]
+  resources :konto_klasas
+  resources :konto_grupas
+  resources :konto_objektas
+  resources :konto_sintetikas
+  resources :konto_racunis
   #resource :kontrolni_broj,only:[:get]
 end
