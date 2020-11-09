@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_07_201334) do
+ActiveRecord::Schema.define(version: 2020_11_09_143903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "devizas", force: :cascade do |t|
+    t.integer "sifra_valute"
+    t.string "drzava"
+    t.string "oznaka_valute"
+    t.integer "vazi_za"
+    t.string "country_code"
+    t.index ["oznaka_valute"], name: "index_devizas_on_oznaka_valute"
+  end
 
   create_table "konto1_klasas", force: :cascade do |t|
     t.string "naziv"

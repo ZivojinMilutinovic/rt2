@@ -32,6 +32,12 @@ gem 'roo', "~> 2.8.0"
 
 gem 'bootstrap-sass'
 
+#za API pozive
+gem 'faraday'
+
+#Da se stite ENV promenljive
+gem 'dotenv-rails'
+
 gem 'jquery-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

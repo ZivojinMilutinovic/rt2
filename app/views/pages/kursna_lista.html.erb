@@ -1,0 +1,53 @@
+
+<h1>Kursna lista na dan  <%= @data["date"] %></h1>
+
+<div class="mt-3 mb-5 col-lg-6 col-md-8">
+    <form action="/kursna_lista"  method="GET">
+    <div class="form-group">
+    <label for="date">Izaberite dan za koji hocete prikazati kursnu listu</label>
+    <div class="input-group">
+    <div class="input-group-prepend">
+    <span class="fa fa-calendar  input-group-text"></span>
+    </div>
+    <input type="date" name="date" id="date" class="form-control" value="">
+       
+    </div>
+       </div>
+       <button type="submit" class="btn btn-primary">Prikazi</button>
+    </form>
+    <p class="mt-2">Pažnja:Kursna lista se ažurira samo radnim danima!</p>
+    </div>
+
+<table id="example" class="data-table table table-striped table-bordered w-100 ">
+        <thead>
+            <tr>
+            <th></th>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            </tr>
+        </thead>
+        <tbody>
+            <% @devize.each do |dev| %>
+                <tr>
+                <td><img src="https://www.countryflags.io/<%=dev.country_code%>/flat/32.png"></td>
+                <td><%=dev.sifra_valute %></td>
+                <td><%=dev.drzava %></td>
+                <td><%=dev.oznaka_valute.upcase %></td>
+                <td><%=dev.vazi_za %></td>
+                <td><%=@data[dev.oznaka_valute]["kup"] %></td>
+                <td><%=@data[dev.oznaka_valute]["sre"] %></td>
+                <td><%=@data[dev.oznaka_valute]["pro"] %></td>
+                </tr>
+            <%end %>
+        </tbody>
+        <tfoot>
+            <tr>
+            <th></th>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            </tr>
+        </tfoot>
+    </table>
+    
