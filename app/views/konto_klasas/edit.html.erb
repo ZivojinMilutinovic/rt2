@@ -1,0 +1,30 @@
+
+<div class="col-lg-6 col-md-8">
+    <h2 class="text-center">Konto klasa</h2>
+    <form action="<%=konto_klasa_url(@klasa) %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <input type="hidden" name="_method" value="PATCH">
+    <input type="hidden" name="id" value="<%=@klasa.id%>">
+    <div class="form-group">
+    <label for="naziv">Naziv</label>
+    <input type="text" name="klasa[naziv]" id="naziv" class="form-control" value="<%=@klasa.naziv %>">
+    </div>
+    <div class="form-group">
+    <label for="klasa">Klasa</label>
+    <input type="number" name="klasa[klasa]" id="klasa" class="form-control" value="<%=@klasa.klasa %>">
+    </div>
+    <div class="form-group">
+    <label for="bilans">Bilans</label>
+    <input type="text" name="klasa[bilans]" id="bilans" class="form-control" value="<%=@klasa.bilans%>">
+    </div>
+    <div class="form-group">
+    <label for="aktivnost">Aktivnost</label>
+    <input type="text" name="klasa[aktivnost]" id="aktivnost" class="form-control" value="<%=@klasa.aktivnost%>">
+    </div>
+    <div class="d-flex justify-content-between">
+    <a href="/konto_klasas" class="btn btn-danger"> Natrag</a>
+    <button type="submit" <%="disabled" if !(@klasa.user==current_user) %>
+     class="btn btn-primary">Azuriraj</button>
+    </div>
+    </form>
+</div>

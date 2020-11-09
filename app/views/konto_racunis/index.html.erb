@@ -8,15 +8,16 @@
             </tr>
         </thead>
         <tbody>
-            <% @konto_grupa.each do |grupa| %>
+            <% @konto_racuni.each do |racun| %>
                 <tr>
-                <td><%=grupa.id %></td>
-                <td><%=grupa.konto1_klasa_id %></td>
-                <td><%=grupa.naziv %></td>
-                <td><%=grupa.grupa %></td>
+                <td><%=racun.id %></td>
+                <td><%=racun.konto4_objekti_prometa_id %></td>
+                <td><%=racun.naziv %></td>
+                <td><%=racun.analitika%></td>
+                <td><%=racun.pozicija_ks_ispravka%></td>
                 <td>
-                <%= render "shared/konto_prikaz",edit_url:edit_konto_grupa_url(grupa),
-                delete_url:konto_grupa_url(grupa) ,obj:grupa%>
+                <%= render "shared/konto_prikaz",edit_url:edit_konto_racuni_url(racun),
+                delete_url:konto_racuni_url(racun) ,obj:racun%>
                 </td>
                 </tr>
             <%end %>
@@ -30,4 +31,4 @@
             </tr>
         </tfoot>
     </table>
-    <a href="<%=new_konto_grupa_url%>" class="btn btn-primary mt-3" >Kreiraj novu grupu</a>
+    <a href="<%=new_konto_racuni_url%>" class="btn btn-primary mt-3" >Kreiraj novi racun</a>

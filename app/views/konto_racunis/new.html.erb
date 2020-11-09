@@ -1,0 +1,26 @@
+<div class="col-lg-6 col-md-8">
+    <h2 class="text-center">Kreiraj novi racun</h2>
+    <form action="/konto_racunis" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <div class="form-group">
+    <label for="objekatID">ObjekatID</label>
+    <input type="number" name="racun[konto4_objekti_prometa_id]" id="objekatID" class="form-control">
+    </div>
+    <div class="form-group">
+    <label for="naziv">Naziv</label>
+    <input type="text" name="racun[naziv]" id="naziv" class="form-control">
+    </div>
+    <div class="form-group">
+    <label for="analitika">Analitika</label>
+    <input type="text" name="racun[analitika]" id="analitika" class="form-control">
+    </div>
+    <div class="form-group">
+    <label for="sifra">Pozicija kontolna sifra ispravka</label>
+    <input type="text" name="racun[pozicija_ks_ispravka]" id="sifra" class="form-control">
+    </div>
+    <div class="d-flex justify-content-between">
+    <a href="/konto_klasas" class="btn btn-danger"> Natrag</a>
+    <button type="submit" class="btn btn-primary">Kreiraj</button>
+    </div>
+    </form>
+</div>

@@ -1,0 +1,43 @@
+<div class="col-lg-6 col-md-8">
+    <h2 class="text-center"> Objekat prometa</h2>
+    <form action="<%=konto_objekta_url(@obj) %>" method="POST">
+    <input type="hidden" name="_method" value="PATCH">
+    <input type="hidden" name="id" value="<%=@obj.id%>">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <div class="form-group">
+    <label for="sintetikaID">SintetikaID:</label>
+    <input type="number" name="obj[konto3_sintetika_id]" value="<%=@obj.konto3_sintetika_id %>"
+     id="sintetikaID" class="form-control">
+    </div>
+    <div class="form-group">
+    <label for="naziv">Naziv</label>
+    <input type="text" name="obj[naziv]" value="<%=@obj.naziv %>"
+     id="naziv" class="form-control">
+    </div>
+    <div class="form-group">
+    <label for="sifra">Sifra 4. broj</label>
+    <input type="number" name="obj[sifra_cetvrti_broj]" value="<%=@obj.sifra_cetvrti_broj %>"
+     id="sifra" class="form-control">
+    </div>
+    <div class="form-group">
+    <label for="objekat">Objekat</label>
+    <input type="text" name="obj[objekat]" value="<%=@obj.objekat %>"
+     id="objekat" class="form-control">
+    </div>
+    <div class="form-group">
+    <label for="tip">Tip</label>
+    <input type="text" name="obj[tip]" value="<%=@obj.tip %>"
+     id="tip" class="form-control">
+    </div>
+    <div class="form-check form-check-inline mb-4">
+    <input class="form-check-input" type="checkbox" <%= "checked" if @obj.ispravka %>
+     id="inlineCheckbox1" value="true" name="obj[ispravka]">
+    <label class="form-check-label" for="inlineCheckbox1">Ispravka</label>
+    </div>
+    <div class="d-flex justify-content-between">
+    <a href="/konto_objektas" class="btn btn-danger"> Natrag</a>
+    <button type="submit" <%="disabled" if !(@obj.user==current_user) %>
+     class="btn btn-primary">Azuriraj</button>
+    </div>
+    </form>
+</div>

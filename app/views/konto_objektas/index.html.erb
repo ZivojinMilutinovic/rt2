@@ -1,0 +1,36 @@
+<table id="example" class="data-table table table-striped table-bordered w-100 ">
+        <thead>
+            <tr>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            <th>Opcije</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @konto_objekta.each do |obj| %>
+                <tr>
+                <td><%=obj.id %></td>
+                <td><%=obj.konto3_sintetika_id %></td>
+                <td><%=obj.naziv %></td>
+                <td><%=obj.sifra_cetvrti_broj %></td>
+                <td><%=obj.objekat %></td>
+                <td><%=obj.tip %></td>
+                <td><%="<i class='fas fa-check'></i>".html_safe if obj.ispravka%></td>
+                <td>
+                <%= render "shared/konto_prikaz",edit_url:edit_konto_objekta_url(obj),
+                delete_url:konto_objekta_url(obj) ,obj:obj%>
+                </td>
+                </tr>
+            <%end %>
+        </tbody>
+        <tfoot>
+            <tr>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            <th>Opcije</th>
+            </tr>
+        </tfoot>
+    </table>
+    <a href="<%=new_konto_objekta_url%>" class="btn btn-primary mt-3" >Kreiraj novi Objekat prometa</a>

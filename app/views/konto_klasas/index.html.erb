@@ -1,22 +1,29 @@
 
-
+<%= javascript_pack_tag "konto" %>
 <table id="example" class="data-table table table-striped table-bordered w-100 ">
         <thead>
             <tr>
             <%@nazivi_kolona.each do |kolona| %>
             <th> <%=kolona %></th>
             <%end %>
+            <th>Opcije</th>
             </tr>
         </thead>
         <tbody>
             <% @konto_klase.each do |klasa| %>
+                
                 <tr>
                 <td><%=klasa.id %></td>
                 <td><%=klasa.naziv %></td>
                 <td><%=klasa.klasa %></td>
                 <td><%=klasa.bilans %></td>
                 <td><%=klasa.aktivnost %></td>
+                <td>
+                <%= render "shared/konto_prikaz",edit_url:edit_konto_klasa_url(klasa),
+                delete_url:konto_klasa_url(klasa) ,obj:klasa%>
+                </td>
                 </tr>
+                
             <%end %>
         </tbody>
         <tfoot>
@@ -24,6 +31,8 @@
             <%@nazivi_kolona.each do |kolona| %>
             <th> <%=kolona %></th>
             <%end %>
+            <th>Opcije</th>
             </tr>
         </tfoot>
     </table>
+    <a href="<%=new_konto_klasa_url%>" class="btn btn-primary mt-3" >Kreiraj novu Klasu</a>

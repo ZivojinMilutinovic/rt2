@@ -30,7 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'roo', "~> 2.8.0"
 
-gem 'bootstrap'
+gem 'bootstrap-sass'
 
 gem 'jquery-rails'
 group :development, :test do

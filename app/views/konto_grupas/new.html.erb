@@ -1,0 +1,22 @@
+<div class="col-lg-6 col-md-8">
+    <h2 class="text-center">Kreiraj novu Grupu</h2>
+    <form action="/konto_grupas" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <div class="form-group">
+    <label for="klasaID">KlasaID:</label>
+    <input type="number" name="grupa[konto1_klasa_id]" id="klasaID" class="form-control">
+    </div>
+    <div class="form-group">
+    <label for="naziv">Naziv</label>
+    <input type="text" name="grupa[naziv]" id="naziv" class="form-control">
+    </div>
+    <div class="form-group">
+    <label for="grupa">Grupa</label>
+    <input type="number" name="grupa[grupa]" id="grupa" class="form-control">
+    </div>
+    <div class="d-flex justify-content-between">
+    <a href="/konto_grupas" class="btn btn-danger"> Natrag</a>
+    <button type="submit" class="btn btn-primary">Kreiraj</button>
+    </div>
+    </form>
+</div>

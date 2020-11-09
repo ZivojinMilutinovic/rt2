@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_175933) do
+ActiveRecord::Schema.define(version: 2020_11_07_201334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,12 +20,14 @@ ActiveRecord::Schema.define(version: 2020_11_04_175933) do
     t.integer "klasa"
     t.string "bilans"
     t.string "aktivnost"
+    t.integer "user_id"
   end
 
   create_table "konto2_grupas", force: :cascade do |t|
     t.integer "konto1_klasa_id"
     t.string "naziv"
     t.integer "grupa"
+    t.integer "user_id"
     t.index ["konto1_klasa_id"], name: "index_konto2_grupas_on_konto1_klasa_id"
   end
 
@@ -33,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_11_04_175933) do
     t.integer "konto2_grupa_id"
     t.string "naziv"
     t.string "konto"
+    t.integer "user_id"
     t.index ["konto2_grupa_id"], name: "index_konto3_sintetikas_on_konto2_grupa_id"
   end
 
@@ -43,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_11_04_175933) do
     t.string "objekat"
     t.string "tip"
     t.boolean "ispravka"
+    t.integer "user_id"
     t.index ["konto3_sintetika_id"], name: "index_konto4_objekti_prometas_on_konto3_sintetika_id"
   end
 
@@ -51,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_11_04_175933) do
     t.string "naziv"
     t.string "analitika"
     t.string "pozicija_ks_ispravka"
+    t.integer "user_id"
     t.index ["konto4_objekti_prometa_id"], name: "index_konto5_racunis_on_konto4_objekti_prometa_id"
   end
 

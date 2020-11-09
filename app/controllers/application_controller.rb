@@ -9,4 +9,7 @@ class ApplicationController < ActionController::Base
         session[:session_token]=session_token
         @user=user
     end
+    def redirect_not_logged_user
+        redirect_to  new_session_url  if current_user.nil?
+    end
 end

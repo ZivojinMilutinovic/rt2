@@ -1,0 +1,33 @@
+<div class="col-lg-6 col-md-8">
+    <h2 class="text-center">Konto Racun</h2>
+    <form action="<%=konto_racuni_url(@racun) %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <input type="hidden" name="_method" value="PATCH">
+    <input type="hidden" name="id" value="<%=@racun.id%>">
+    <div class="form-group">
+    <label for="objekatID">ObjekatID</label>
+    <input type="number" name="racun[konto4_objekti_prometa_id]" value="<%=@racun.konto4_objekti_prometa_id %>"
+     id="objekatID" class="form-control">
+    </div>
+    <div class="form-group">
+    <label for="naziv">Naziv</label>
+    <input type="text" name="racun[naziv]" value="<%=@racun.naziv %>"
+     id="naziv" class="form-control">
+    </div>
+    <div class="form-group">
+    <label for="analitika">Analitika</label>
+    <input type="text" name="racun[analitika]" value="<%=@racun.analitika %>"
+     id="analitika" class="form-control">
+    </div>
+    <div class="form-group">
+    <label for="sifra">Pozicija kontolna sifra ispravka</label>
+    <input type="text" name="racun[pozicija_ks_ispravka]" value="<%=@racun.pozicija_ks_ispravka %>"
+     id="sifra" class="form-control">
+    </div>
+    <div class="d-flex justify-content-between">
+    <a href="/konto_klasas" class="btn btn-danger"> Natrag</a>
+    <button type="submit" <%="disabled" if !(@racun.user==current_user) %>
+     class="btn btn-primary">Azuriraj</button>
+    </div>
+    </form>
+</div>
