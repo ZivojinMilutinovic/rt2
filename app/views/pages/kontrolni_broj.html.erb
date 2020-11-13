@@ -10,11 +10,15 @@
   <label for="kontrolni_broj">Kontrolni broj:</label>
   <input type="text" id="kontrolni_broj" value="<%=@kontrolni_broj%>" class="form-control">
   </div>
+  <div class="form-group">
+  <label for="rezultat">Rezultat:</label>
+  <input type="text" id="rezultat" value="<%=@rezultat%>" class="form-control">
+  </div>
   <input type="submit" class="btn btn-danger" value="mod97">
   <span><%=flash.now[:errors] %></span>
   </form>
 </div>
-
+<!-- 
 <div>
 UPUTSTVO ZA KORISTENJE PROGRAMA ZA RACUNANJE KONTROLNOG BROJA 
                                                        PO MODELU 97 
@@ -42,3 +46,4 @@ UPUTSTVO ZA KORISTENJE PROGRAMA ZA RACUNANJE KONTROLNOG BROJA
  - cifre: 1; 2; 3; 4; 5; 6; 7; 8; 9 i 0; 
  - latinicna slova: A; B; C; D; E; F; G; H; I; J; K; L; M; N; O; P; Q; R; S; T; U; V; W; X; Y; Z 
 </div>
+-->

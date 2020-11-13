@@ -18,8 +18,18 @@
                 <td><%=obj.tip %></td>
                 <td><%="<i class='fas fa-check'></i>".html_safe if obj.ispravka%></td>
                 <td>
-                <%= render "shared/konto_prikaz",edit_url:edit_konto_objekta_url(obj),
-                delete_url:konto_objekta_url(obj) ,obj:obj%>
+                <div class="d-flex">
+                <a href="<%=edit_konto_objekta_url(obj) %>"><span class="fa fa-eye mr-2"></span></a>
+                <% if obj.user==current_user%>
+                <form action="<%= konto_objekta_url(obj) %>" method="POST">
+                <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="bg-transparent" style="border:none">
+                <span class="fa fa-trash"></span>
+                </button>
+                </form>
+                <%end%>
+                </div>
                 </td>
                 </tr>
             <%end %>

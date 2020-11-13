@@ -15,8 +15,18 @@
                 <td><%=grupa.naziv %></td>
                 <td><%=grupa.grupa %></td>
                 <td>
-                <%= render "shared/konto_prikaz",edit_url:edit_konto_grupa_url(grupa),
-                delete_url:konto_grupa_url(grupa) ,obj:grupa%>
+                <div class="d-flex">
+                <a href="<%=edit_konto_grupa_url(grupa) %>"><span class="fa fa-eye mr-2"></span></a>
+                <% if grupa.user==current_user%>
+                <form action="<%= konto_grupa_url(grupa) %>" method="POST">
+                <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="bg-transparent" style="border:none">
+                <span class="fa fa-trash"></span>
+                </button>
+                </form>
+                <%end%>
+                </div>
                 </td>
                 </tr>
             <%end %>

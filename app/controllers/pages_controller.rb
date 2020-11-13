@@ -8,8 +8,10 @@ class PagesController < ApplicationController
                 flash.now[:errors]="Niste uneli broj u ispravnom formatu"
             else
                 @kontrolni_broj=helpers.izracunaj_sumu(broj)
+                @rezultat=broj+@kontrolni_broj.to_s
             end
         end
+        
         render :kontrolni_broj
     end
     def kursna_lista 

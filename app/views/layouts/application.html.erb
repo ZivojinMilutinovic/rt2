@@ -6,11 +6,13 @@
     <%= csp_meta_tag %>
     <%= yield :head %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
   <%=render 'shared/navbar' %>
   <div class="container" id="main">
+  
     <%= yield %>
     </div>
   <%= render 'shared/footer' %>

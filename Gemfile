@@ -35,6 +35,9 @@ gem 'bootstrap-sass'
 #za API pozive
 gem 'faraday'
 
+#Za react
+gem 'react-rails'
+
 #Da se stite ENV promenljive
 gem 'dotenv-rails'
 

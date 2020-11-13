@@ -16,8 +16,18 @@
                 <td><%=racun.analitika%></td>
                 <td><%=racun.pozicija_ks_ispravka%></td>
                 <td>
-                <%= render "shared/konto_prikaz",edit_url:edit_konto_racuni_url(racun),
-                delete_url:konto_racuni_url(racun) ,obj:racun%>
+                <div class="d-flex">
+                <a href="<%=edit_konto_racuni_url(racun) %>"><span class="fa fa-eye mr-2"></span></a>
+                <% if racun.user==current_user%>
+                <form action="<%= konto_racuni_url(racun) %>" method="POST">
+                <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="bg-transparent" style="border:none">
+                <span class="fa fa-trash"></span>
+                </button>
+                </form>
+                <%end%>
+                </div>
                 </td>
                 </tr>
             <%end %>

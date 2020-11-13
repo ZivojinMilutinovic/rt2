@@ -19,8 +19,18 @@
                 <td><%=klasa.bilans %></td>
                 <td><%=klasa.aktivnost %></td>
                 <td>
-                <%= render "shared/konto_prikaz",edit_url:edit_konto_klasa_url(klasa),
-                delete_url:konto_klasa_url(klasa) ,obj:klasa%>
+                <div class="d-flex">
+                <a href="<%=edit_konto_klasa_url(klasa) %>"><span class="fa fa-eye mr-2"></span></a>
+                <% if klasa.user==current_user%>
+                <form action="<%= konto_klasa_url(klasa) %>" method="POST">
+                <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="bg-transparent" style="border:none">
+                <span class="fa fa-trash"></span>
+                </button>
+                </form>
+                <%end%>
+                </div>
                 </td>
                 </tr>
                 
