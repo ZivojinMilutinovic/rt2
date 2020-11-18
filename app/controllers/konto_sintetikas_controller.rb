@@ -1,4 +1,5 @@
 class KontoSintetikasController < ApplicationController
+    before_action :redirect_not_logged_user
     def index
         @konto_sintetika=Konto3Sintetika.where(user_id:[nil,current_user.id])
         @nazivi_kolona=Konto3Sintetika::NAZIVI_KOLONA

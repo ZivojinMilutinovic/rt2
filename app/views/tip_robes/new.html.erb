@@ -1,0 +1,23 @@
+<div class="d-flex justify-content-center">
+<div class="col-lg-7 col-md-9 ">
+    <h2 class="text-center">Kreiraj novu Robu</h2>
+    <form action="/tip_robes" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    
+    <div class="form-group   ">
+    <label for="naziv">Naziv:</label>
+    <input type="text" name="roba[naziv]" id="naziv" class="form-control">
+    </div>
+
+    <div class="form-group  ">
+    <label for="oznaka">Oznaka:</label>
+    <input type="text" name="roba[oznaka]" id="oznaka" class="form-control">
+    </div>
+
+    <div class="d-flex justify-content-between">
+    <a href="/tip_robes" class="btn btn-danger"> Natrag</a>
+    <button type="submit" class="btn btn-primary">Kreiraj</button>
+    </div>
+    </form>
+</div>
+</div>

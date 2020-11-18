@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+<div class="col-lg-7 col-md-9 ">
+    <h2 class="text-center">Kreiraj novoi magacin</h2>
+    <form action="<%=magacini_url(@magacini) %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+     <input type="hidden" name="_method" value="PATCH">
+      <input type="hidden" name="id" value="<%=@magacini.id%>">
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="objekti_id">Objekat ID:</label>
+    <input type="number" name="magacin[objekti_id]" id="objekti_id" class="form-control" value="<%=@magacini.objekti_id%>" >
+    </div>
+    <div class="form-group col  ml-1">
+    <label for="naziv">Naziv:</label>
+    <input type="text" name="magacin[naziv]" id="naziv" class="form-control" value="<%=@magacini.naziv%>">
+    </div>
+    </div>
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="zalihe">Zalihe:</label>
+    <input type="text" name="magacin[zalihe]" id="zalihe" class="form-control" value="<%=@magacini.zalihe%>">
+    </div>
+    <div class="form-group col ml-1">
+    <label for="adresa">Adresa:</label>
+    <input type="text" name="magacin[adresa]" id="adresa" class="form-control" value="<%=@magacini.adresa%>">
+    </div>
+    </div>
+
+
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="lokacija">Lokacija:</label>
+    <input type="text" name="magacin[lokacija]" id="lokacija" class="form-control" value="<%=@magacini.lokacija%>">
+    </div>
+    <div class="form-group col ml-1">
+    <label for="sifra">sifra:</label>
+    <input type="number" name="magacin[sifra]" id="sifra" class="form-control" value="<%=@magacini.sifra%>">
+    </div>
+    </div>
+
+    
+    <div class="form-row">
+    <div class="form-group col">
+    <label for="oznaka">Oznaka:</label>
+    <input type="text" name="magacin[oznaka]" id="oznaka" class="form-control" value="<%=@magacini.oznaka%>">
+    </div>
+    <div class="form-group col mr-1">
+    <label for="konto">Konto:</label>
+    <input type="number" name="magacin[konto]" id="konto" class="form-control" value="<%=@magacini.konto%>">
+    </div>
+    </div>
+    
+    
+    
+    
+ 
+    <div class="d-flex justify-content-between">
+    <a href="/magacinis" class="btn btn-danger"> Natrag</a>
+    <button type="submit" <%="disabled" if !(@magacini.user==current_user) %>
+     class="btn btn-primary">Azuriraj</button>
+    </div>
+    </form>
+</div>
+</div>

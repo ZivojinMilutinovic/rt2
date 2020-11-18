@@ -1,0 +1,52 @@
+
+<h1 class="text-center mb-3">Magacini</h1>
+<div class="table-responsive">
+<table  class="<%=table_classes %>">
+        <thead>
+            <tr>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            <th>Opcije</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @magacini.each do |m| %>
+                <tr>
+                <td><%=m.id %></td>
+                <td><%=m.objekti_id %></td>
+                <td><%=m.naziv %></td>
+                <td><%=m.zalihe %></td>
+                <td><%=m.adresa %></td>
+                <td><%=m.lokacija %></td>
+                <td><%=m.sifra %></td>
+                <td><%=m.konto %></td>
+                <td><%=m.oznaka %></td>
+                <td>
+                <div class="d-flex">
+                <a href="<%=edit_magacini_url(m) %>"><span class="fa fa-eye mr-2"></span></a>
+                <% if m.user==current_user%>
+                <form action="<%= magacini_url(m) %>" method="POST">
+                <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="bg-transparent" style="border:none">
+                <span class="fa fa-trash"></span>
+                </button>
+                </form>
+                <%end%>
+                </div>
+                </td>
+                </tr>
+            <%end %>
+        </tbody>
+        <tfoot>
+            <tr>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            <th>Opcije</th>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+    <a href="<%=new_magacini_url%>" class="btn btn-primary mt-3" >Kreiraj novi magacin</a>

@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+    before_action :redirect_not_logged_user
     def index
     end
     def kontrolni_broj
@@ -27,5 +28,8 @@ class PagesController < ApplicationController
         response=Faraday.get path
         @data=JSON.parse(response.body)["result"]
         render :kursna_lista
+    end
+    def profile_page
+        render :profile_page
     end
 end

@@ -1,0 +1,76 @@
+
+<div class="d-flex justify-content-center">
+<div class="col-lg-7 col-md-9 ">
+    <h2 class="text-center">Partneri</h2>
+    <form action="<%=partneri_url(@partneri) %>" method="POST">
+     <input type="hidden" name="_method" value="PATCH">
+     <input type="hidden" name="id" value="<%=@partneri.id%>">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="opsti_podaci">Opsti podaci:</label>
+    <input type="text" name="partneri[opsti_podaci]" id="opsti_podaci" class="form-control" value="<%=@partneri.opsti_podaci%>">
+    </div>
+    <div class="form-group col  ml-1">
+    <label for="naziv">Naziv:</label>
+    <input type="text" name="partneri[naziv]" id="naziv" class="form-control" value="<%=@partneri.naziv%>">
+    </div>
+    </div>
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="sifra">Sifra:</label>
+    <input type="number" name="partneri[sifra]" id="sifra" class="form-control" value="<%=@partneri.sifra%>">
+    </div>
+    <div class="form-group col ml-1">
+    <label for="tip">Tip:</label>
+    <input type="text" name="partneri[tip]" id="tip" class="form-control" value="<%=@partneri.tip%>">
+    </div>
+    </div>
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="sediste">Sediste:</label>
+    <input type="text" name="partneri[sediste]" id="sediste" class="form-control" value="<%=@partneri.sediste%>">
+    </div>
+    <div class="form-group col ml-1">
+    <label for="adresa">Adresa:</label>
+    <input type="text" name="partneri[adresa]" id="adresa" class="form-control" value="<%=@partneri.adresa%>">
+    </div>
+    </div>
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="kontakt">Kontakt:</label>
+    <input type="text" name="partneri[kontakt]" id="kontakt" class="form-control" value="<%=@partneri.kontakt%>">
+    </div>
+    <div class="form-group col ml-1">
+    <label for="status">Status:</label>
+    <input type="text" name="partneri[status]" id="status" class="form-control" value="<%=@partneri.status%>">
+    </div>
+    </div>
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="pib">Pib:</label>
+    <input type="number" name="partneri[pib]" id="pib" class="form-control" value="<%=@partneri.pib%>">
+    </div>
+    <div class="form-group col ml-1">
+    <label for="tekuci">Tekuci racun:</label>
+    <input type="text" name="partneri[tekuci]" id="tekuci" class="form-control" value="<%=@partneri.tekuci%>">
+    </div>
+    </div>
+ 
+    <div class="form-group ">
+    <label for="pdv">Pdv:</label>
+    <input type="text" name="partneri[pdv]" id="pdv" class="form-control" value="<%=@partneri.pdv%>">
+    </div>
+    
+  
+    
+    
+    <div class="d-flex justify-content-between">
+    <a href="/partneris" class="btn btn-danger"> Natrag</a>
+    <button type="submit" <%="disabled" if !(@partneri.user==current_user) %>
+     class="btn btn-primary">Azuriraj</button>
+    </div>
+    </div>
+    </form>
+</div>
+</div>

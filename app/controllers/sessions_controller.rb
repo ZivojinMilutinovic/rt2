@@ -16,6 +16,6 @@ class SessionsController < ApplicationController
     def destroy
         current_user.reset_session_token!
         session[:session_token]=nil
-        redirect_to "/"
+        render json: {message: 'User logged out'}
     end
 end

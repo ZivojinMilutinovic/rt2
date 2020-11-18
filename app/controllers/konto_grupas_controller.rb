@@ -1,4 +1,5 @@
 class KontoGrupasController < ApplicationController
+    before_action :redirect_not_logged_user
     def index
         @konto_grupa=Konto2Grupa.where(user_id:[nil,current_user.id])
         @nazivi_kolona=Konto2Grupa::NAZIVI_KOLONA

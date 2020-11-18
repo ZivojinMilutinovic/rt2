@@ -31,7 +31,7 @@
       </li>
     </ul>
     <ul class="navbar-nav">
-    <%if current_user%>
+    <%if current_user %>
   <span>Dobrodosao  <%=current_user.username%></span>
   <%= button_to  "Log out", session_url,method: :delete %>
   <%else%>

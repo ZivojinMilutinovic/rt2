@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+<div class="col-lg-7 col-md-9 ">
+    <h2 class="text-center">Roba</h2>
+    <form action="<%=roba_url(@roba) %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <input type="hidden" name="_method" value="PATCH">
+     <input type="hidden" name="id" value="<%=@roba.id%>">
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="analitika_racuna_id">AnalitikaRacunaID:</label>
+    <input type="number" name="roba[analitika_racuna_id]" id="analitika_racuna_id" class="form-control" 
+    value="<%=@roba.analitika_racuna_id%>" >
+    </div>
+    <div class="form-group col  ml-1">
+    <label for="naziv">Naziv:</label>
+    <input type="text" name="roba[naziv]" id="naziv" class="form-control" value="<%=@roba.naziv%>">
+    </div>
+    </div>
+   
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="sifra">Šifra:</label>
+    <input type="number" name="roba[sifra]" id="sifra" class="form-control" value="<%=@roba.sifra%>">
+    </div>
+    <div class="form-group col ml-1">
+    <label for="oznaka">Oznaka:</label>
+    <input type="text" name="roba[oznaka]" id="oznaka" class="form-control" value="<%=@roba.oznaka%>">
+    </div>
+    </div>
+    
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="kat_broj">Kat Broj:</label>
+    <input type="text" name="roba[kat_broj]" id="kat_broj" class="form-control" value="<%=@roba.kat_broj%>">
+    </div>
+    <div class="form-group col mr-1">
+    <label for="jedinica_mere">Jedinica mere:</label>
+    <input type="text" name="roba[jedinica_mere]" id="jedinica_mere" class="form-control" value="<%=@roba.jedinica_mere%>">
+    </div>
+    </div>
+
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="poreska_tarifa">Poreska tarifa:</label>
+    <input type="number" name="roba[poreska_tarifa]" id="poreska_tarifa" class="form-control" value="<%=@roba.poreska_tarifa%>">
+    </div>
+    <div class="form-group col mr-1">
+    <label for="pakovanje">Pakovanje:</label>
+    <input type="text" name="roba[pakovanje]" id="pakovanje" class="form-control" value="<%=@roba.pakovanje%>">
+    </div>
+    </div>
+
+    <div class="d-flex justify-content-between">
+    <a href="/robas" class="btn btn-danger"> Natrag</a>
+   <button type="submit" <%="disabled" if !(@roba.user==current_user) %>
+     class="btn btn-primary">Azuriraj</button>
+    </div>
+    </form>
+</div>
+</div>

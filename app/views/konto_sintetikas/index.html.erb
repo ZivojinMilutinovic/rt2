@@ -1,4 +1,5 @@
-<table id="example" class="data-table table table-striped table-bordered w-100 ">
+<h1 class="text-center mb-3">Konto3 Sintetika</h1>
+<div class="table-responsive"><table  class="<%=table_classes %>">
         <thead>
             <tr>
             <%@nazivi_kolona.each do |kolona| %>
@@ -40,5 +41,5 @@
             </tr>
         </tfoot>
     </table>
-
+    </div>
     <a href="<%=new_konto_sintetika_url%>" class="btn btn-primary mt-3" >Kreiraj novu Sintetiku</a>

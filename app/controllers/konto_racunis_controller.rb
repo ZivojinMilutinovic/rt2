@@ -1,4 +1,5 @@
 class KontoRacunisController < ApplicationController
+    before_action :redirect_not_logged_user
     def index
         @konto_racuni=Konto5Racuni.where(user_id:[nil,current_user.id])
         @nazivi_kolona=Konto5Racuni::NAZIVI_KOLONA

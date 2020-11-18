@@ -1,4 +1,5 @@
 class KontoObjektasController < ApplicationController
+    before_action :redirect_not_logged_user
     def index
         @konto_objekta=Konto4ObjektiPrometas.where(user_id:[nil,current_user.id])
         @nazivi_kolona=Konto4ObjektiPrometas::NAZIVI_KOLONA

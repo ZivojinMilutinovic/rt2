@@ -11,6 +11,12 @@ class User < ApplicationRecord
     has_many :konto_sintetike,class_name:"Konto3Sintetika",primary_key: :id,foreign_key: :user_id,dependent: :destroy
     has_many :konto_objekti_prometa,class_name:"Konto4ObjektiPrometas",primary_key: :id,foreign_key: :user_id,dependent: :destroy
     has_many :konto_racuni,class_name:"Konto5Racuni",primary_key: :id,foreign_key: :user_id,dependent: :destroy
+    has_many :korisnici,class_name:"Korisnici",primary_key: :id,foreign_key: :user_id,dependent: :destroy
+    has_many :partneri,class_name:"Partneri",primary_key: :id,foreign_key: :user_id,dependent: :destroy
+    has_many :poreske_tarife,class_name:"PoreskeTarife",primary_key: :id,foreign_key: :user_id,dependent: :destroy
+    has_many :robe,class_name:"Robas",primary_key: :id,foreign_key: :user_id,dependent: :destroy
+    has_many :tip_robe,class_name:"TipRobe",primary_key: :id,foreign_key: :user_id,dependent: :destroy
+    has_many :magacini,class_name:"Magacini",primary_key: :id,foreign_key: :user_id,dependent: :destroy
 
 
 

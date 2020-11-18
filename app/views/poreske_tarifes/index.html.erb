@@ -1,0 +1,49 @@
+
+<h1 class="text-center mb-3">Poreske tarife</h1>
+<div class="table-responsive">
+<table  class="<%=table_classes %>">
+        <thead>
+            <tr>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            <th>Opcije</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @tarife.each do |t| %>
+                <tr>
+                <td><%=t.id %></td>
+                <td><%=t.tarifa %></td>
+                <td><%=t.naziv %></td>
+                <td><%=t.stopa %></td>
+                <td><%= date_time(t.poc_dat) %></td>
+                <td><%=date_time(t.zav_dat) %></td>
+                <td>
+                <div class="d-flex">
+                <a href="<%=edit_poreske_tarife_url(t) %>"><span class="fa fa-eye mr-2"></span></a>
+                <% if t.user==current_user%>
+                <form action="<%= poreske_tarife_url(t) %>" method="POST">
+                <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="bg-transparent" style="border:none">
+                <span class="fa fa-trash"></span>
+                </button>
+                </form>
+                <%end%>
+                </div>
+                </td>
+                </tr>
+            <%end %>
+        </tbody>
+        <tfoot>
+            <tr>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            <th>Opcije</th>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+    <a href="<%=new_poreske_tarife_url%>" class="btn btn-primary mt-3" >Kreiraj novu poresku tarifu</a>

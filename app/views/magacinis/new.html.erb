@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-center">
+<div class="col-lg-7 col-md-9 ">
+    <h2 class="text-center">Kreiraj novi magacin</h2>
+    <form action="/magacinis" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="objekti_id">Objekat ID:</label>
+    <input type="number" name="magacin[objekti_id]" id="objekti_id" class="form-control">
+    </div>
+    <div class="form-group col  ml-1">
+    <label for="naziv">Naziv:</label>
+    <input type="text" name="magacin[naziv]" id="naziv" class="form-control">
+    </div>
+    </div>
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="zalihe">Zalihe:</label>
+    <input type="text" name="magacin[zalihe]" id="zalihe" class="form-control">
+    </div>
+    <div class="form-group col ml-1">
+    <label for="adresa">Adresa:</label>
+    <input type="text" name="magacin[adresa]" id="adresa" class="form-control">
+    </div>
+    </div>
+    
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="lokacija">Lokacija:</label>
+    <input type="text" name="magacin[lokacija]" id="lokacija" class="form-control">
+    </div>
+    <div class="form-group col ml-1">
+    <label for="sifra">Sifra:</label>
+    <input type="number" name="magacin[sifra]" id="sifra" class="form-control">
+    </div>
+    </div>
+
+    <div class="form-row">
+    <div class="form-group col">
+    <label for="oznaka">Oznaka:</label>
+    <input type="text" name="magacin[oznaka]" id="oznaka" class="form-control">
+    </div>
+   <div class="form-group col mr-1">
+    <label for="konto">Konto:</label>
+    <input type="number" name="magacin[konto]" id="konto" class="form-control">
+    </div>
+    </div>
+   
+    
+    
+   
+ 
+    <div class="d-flex justify-content-between">
+    <a href="/partneris" class="btn btn-danger"> Natrag</a>
+    <button type="submit" class="btn btn-primary">Kreiraj</button>
+    </div>
+    </form>
+</div>
+</div>

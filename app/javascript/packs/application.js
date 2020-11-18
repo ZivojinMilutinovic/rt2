@@ -16,8 +16,8 @@ require("datatables.net")
 require('datatables.net-bs4')
 require("datatables.net-bs4/css/dataTables.bootstrap4.min.css")
 
-import $ from 'jquery';
-global.$ = jQuery;
+//najelegantnija opcija
+global.$ = require("jquery");
 
 const dataTables = [];
 
@@ -25,7 +25,14 @@ document.addEventListener("turbolinks:load", () => {
   if (dataTables.length === 0 && $('.data-table').length !== 0) {
     $('.data-table').each((_, element) => {
       dataTables.push($(element).DataTable({
-        pageLength: 50,
+        pageLength: 25,
+        "lengthChange": false,
+        "filter":false,
+        "language":{
+          "info":"Prikazujemo stranicu _PAGE_ od _PAGES_ ",
+          "zeroRecords": "Ništa nije pronađeno",
+          "infoFiltered": "(Ukupan broj filtriranih redova: _MAX_ )",
+        },
       }));
     });
   }

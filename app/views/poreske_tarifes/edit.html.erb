@@ -1,0 +1,44 @@
+
+
+<div class="d-flex justify-content-center">
+<div class="col-lg-7 col-md-9 ">
+    <h2 class="text-center">Poreska tarifa</h2>
+    <form action="<%=poreske_tarife_url(@tarife) %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <input type="hidden" name="_method" value="PATCH">
+     <input type="hidden" name="id" value="<%=@tarife.id%>">
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="tarifa">Tarifa:</label>
+    <input type="number" name="tarifa[tarifa]" id="tarifa" class="form-control" value="<%=@tarife.tarifa%>" >
+    </div>
+    <div class="form-group col  ml-1">
+    <label for="naziv">Naziv:</label>
+    <input type="text" name="tarifa[naziv]" id="naziv" class="form-control" value="<%=@tarife.naziv%>">
+    </div>
+    </div>
+   
+    <div class="form-group">
+    <label for="stopa">Stopa:</label>
+    <input type="number" name="tarifa[stopa]" id="stopa" class="form-control" value="<%=@tarife.stopa%>">
+    </div>
+    
+    <div class="form-row">
+    <div class="form-group col ml-1">
+    <label for="poc_dat">Početni datum:</label>
+    <input type="date" name="tarifa[poc_dat]" id="poc_dat" class="form-control"  value="<%=@tarife.poc_dat.strftime("%Y-%m-%d") if @tarife.poc_dat%>">
+    </div>
+    <div class="form-group col mr-1">
+    <label for="zav_dat">Završni datum:</label>
+    <input type="date" name="tarifa[zav_dat]" id="zav_dat" class="form-control" value="<%=@tarife.zav_dat.strftime("%Y-%m-%d") if @tarife.zav_dat%>">
+    </div>
+    </div>
+
+    <div class="d-flex justify-content-between">
+    <a href="/poreske_tarifes" class="btn btn-danger"> Natrag</a>
+    <button type="submit" <%="disabled" if !(@tarife.user==current_user) %>
+     class="btn btn-primary">Azuriraj</button>
+    </div>
+    </form>
+</div>
+</div>

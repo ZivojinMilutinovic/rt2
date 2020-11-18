@@ -1,0 +1,47 @@
+
+<h1 class="text-center mb-3">Tip robe</h1>
+<div class="table-responsive">
+<table  class="<%=table_classes %>">
+        <thead>
+            <tr>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            <th>Opcije</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @roba.each do |r| %>
+                <tr>
+                <td><%=r.id %></td>
+                
+                <td><%=r.naziv %></td>
+                <td><%=r.oznaka%></td>
+                <td>
+                <div class="d-flex">
+                <a href="<%=edit_tip_robe_url(r) %>"><span class="fa fa-eye mr-2"></span></a>
+                <% if r.user==current_user%>
+                <form action="<%= tip_robe_url(r) %>" method="POST">
+                <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="bg-transparent" style="border:none">
+                <span class="fa fa-trash"></span>
+                </button>
+                </form>
+                <%end%>
+                </div>
+                </td>
+                </tr>
+            <%end %>
+        </tbody>
+        <tfoot>
+            <tr>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            <th>Opcije</th>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+    <a href="<%=new_tip_robe_url%>" class="btn btn-primary mt-3" >Kreiraj novu robu</a>
