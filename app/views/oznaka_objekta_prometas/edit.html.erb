@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-center">
+<div class="col-lg-7 col-md-9 ">
+    <h2 class="text-center">Kreiraj novu oznaku objekta prometa </h2>
+    <form action="<%=oznaka_objekta_prometa_url(@oznaka) %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <input type="hidden" name="id" value="<%=@oznaka.id%>">
+   <input type="hidden" name="_method" value="PATCH">
+    <div class="form-group ">
+    <label for="naziv_oznake">Naziv oznake:</label>
+    <input type="text" name="oznaka[naziv_oznake]" id="naziv_oznake" class="form-control" value="<%=@oznaka.naziv_oznake%>">
+    </div>
+    <div class="form-group ">
+    <label for="oznaka">Oznaka:</label>
+    <input type="text" name="oznaka[oznaka]" id="oznaka" class="form-control" value="<%=@oznaka.oznaka%>">
+    </div>
+
+    <div class="d-flex justify-content-between">
+    <a href="/oznaka_objekta_prometas" class="btn btn-danger"> Natrag</a>
+   <button type="submit" <%="disabled" if !(@oznaka.user==current_user) %>
+     class="btn btn-primary">Azuriraj</button>
+    </div>
+    </form>
+</div>
+</div>

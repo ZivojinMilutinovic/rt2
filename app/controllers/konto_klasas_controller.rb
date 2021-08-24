@@ -2,6 +2,7 @@ class KontoKlasasController < ApplicationController
     before_action :redirect_not_logged_user
     def index
         @konto_klase=Konto1Klasa.where(user_id:[nil,current_user.id])
+        @konto_klase=@konto_klase.limit(0) if current_user.resetuj_konto1_klasu
         @nazivi_kolona=Konto1Klasa::NAZIVI_KOLONA;
         render :index
     end
@@ -37,6 +38,12 @@ class KontoKlasasController < ApplicationController
     def destroy
         @klasa=Konto1Klasa.find_by(id:params[:id])
         @klasa.destroy if @klasa
+        redirect_to "/konto_klasas"
+    end
+    def konifgurisi
+        t=false
+        t=true  if params[:radios]=="svoji_podaci"
+        current_user.update(resetuj_konto1_klasu:t)
         redirect_to "/konto_klasas"
     end
     private

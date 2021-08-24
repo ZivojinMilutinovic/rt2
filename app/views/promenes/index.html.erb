@@ -1,0 +1,48 @@
+
+<h1 class="text-center mb-3">Promene</h1>
+<div class="table-responsive">
+<table  class="<%=table_classes %>">
+        <thead>
+            <tr>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            <th>Opcije</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @promene.each do |pr| %>
+                <tr>
+                <td><%=pr.id %></td>
+                <td><%=pr.promena_tip_naziv %></td>
+                <td><%=pr.naziv %></td>
+                <td><%="<i class='fas fa-check'></i>".html_safe if pr.pdv_odbitak%></td>
+                <td><%="<i class='fas fa-check'></i>".html_safe if pr.ks%></td>
+                <td>
+                <div class="d-flex">
+                <a href="<%=edit_promene_url(pr) %>"><span class="fa fa-eye mr-2"></span></a>
+                <% if pr.user==current_user%>
+                <form action="<%= promene_url(pr) %>" method="POST">
+                <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="bg-transparent" style="border:none">
+                <span class="fa fa-trash"></span>
+                </button>
+                </form>
+                <%end%>
+                </div>
+                </td>
+                </tr>
+            <%end %>
+        </tbody>
+        <tfoot>
+            <tr>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            <th>Opcije</th>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+    <a href="<%=new_promene_url%>" class="btn btn-primary mt-3" >Kreiraj novu promenu</a>

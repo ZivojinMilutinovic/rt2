@@ -1,0 +1,3 @@
+class Proceduras < ApplicationRecord
+
+end

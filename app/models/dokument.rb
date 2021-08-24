@@ -1,0 +1,3 @@
+class Dokument < ApplicationRecord
+
+end

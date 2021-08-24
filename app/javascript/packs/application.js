@@ -27,12 +27,13 @@ document.addEventListener("turbolinks:load", () => {
       dataTables.push($(element).DataTable({
         pageLength: 25,
         "lengthChange": false,
-        "filter":false,
+        "filter":true,
         "language":{
           "info":"Prikazujemo stranicu _PAGE_ od _PAGES_ ",
           "zeroRecords": "Ništa nije pronađeno",
           "infoFiltered": "(Ukupan broj filtriranih redova: _MAX_ )",
-        },
+          "search":"Pretraži:"
+        }
       }));
     });
   }

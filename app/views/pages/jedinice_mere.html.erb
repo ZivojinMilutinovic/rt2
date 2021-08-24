@@ -1,0 +1,27 @@
+<h1 class="text-center mb-3">Jedinice mere</h1>
+<table id="example" class="data-table table table-striped table-bordered w-100 ">
+        <thead>
+            <tr>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            </tr>
+        </thead>
+        <tbody>
+            <% @jedinice_mere.each do |mera| %>
+                <tr>
+                <td><%=mera.id %></td>
+                <td><%=mera.naziv %></td>
+                <td><%=mera.oznaka %></td>
+                </tr>
+            <%end %>
+        </tbody>
+        <tfoot>
+            <tr>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            </tr>
+        </tfoot>
+    </table>
+    

@@ -1,0 +1,3 @@
+class DokumentKlasas < ApplicationRecord
+
+end

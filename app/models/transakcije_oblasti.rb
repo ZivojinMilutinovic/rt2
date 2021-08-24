@@ -1,0 +1,3 @@
+class TransakcijeOblasti < ApplicationRecord
+
+end

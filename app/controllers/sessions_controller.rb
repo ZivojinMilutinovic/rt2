@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
             flash.now[:errors]=["Korisnik nije pronadjen"]
             render :new
         end
-        
     end
     def destroy
         current_user.reset_session_token!

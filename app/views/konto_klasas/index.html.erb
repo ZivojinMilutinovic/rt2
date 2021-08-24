@@ -1,49 +1,111 @@
-<h1 class="text-center mb-3">Konto1 Klasa</h1>
-<div class="table-responsive">
-<table  class="<%=table_classes %>">
-        <thead>
-            <tr>
-            <%@nazivi_kolona.each do |kolona| %>
-            <th> <%=kolona %></th>
-            <%end %>
-            <th>Opcije</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @konto_klase.each do |klasa| %>
-                
+
+
+<div class="display-none" id="hot_keys"></div>
+<div class="tabela-prikaz">
+    <h1 class="text-center mb-3">Konto1 Klasa</h1>
+
+    <div class="table-responsive">
+    <table id="my-table"  class="<%=table_classes %>">
+            <thead>
                 <tr>
-                <td><%=klasa.id %></td>
-                <td><%=klasa.naziv %></td>
-                <td><%=klasa.klasa %></td>
-                <td><%=klasa.bilans %></td>
-                <td><%=klasa.aktivnost %></td>
-                <td>
-                <div class="d-flex">
-                <a href="<%=edit_konto_klasa_url(klasa) %>"><span class="fa fa-eye mr-2"></span></a>
-                <% if klasa.user==current_user%>
-                <form action="<%= konto_klasa_url(klasa) %>" method="POST">
-                <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-                <input type="hidden" name="_method" value="DELETE">
-                <button type="submit" class="bg-transparent" style="border:none">
-                <span class="fa fa-trash"></span>
-                </button>
-                </form>
-                <%end%>
-                </div>
-                </td>
+                <%@nazivi_kolona.each do |kolona| %>
+                <th> <%=kolona %></th>
+                <%end %>
+                <th>Opcije</th>
                 </tr>
-                
-            <%end %>
-        </tbody>
-        <tfoot>
-            <tr>
-            <%@nazivi_kolona.each do |kolona| %>
-            <th> <%=kolona %></th>
-            <%end %>
-            <th>Opcije</th>
-            </tr>
-        </tfoot>
-    </table>
+            </thead>
+            <tbody>
+                <% @konto_klase.each do |klasa| %>
+                    
+                    <tr>
+                    <td><%=klasa.id %></td>
+                    <td><%=klasa.naziv %></td>
+                    <td><%=klasa.klasa %></td>
+                    <td><%=klasa.bilans %></td>
+                    <td><%=klasa.aktivnost %></td>
+                    <td>
+                    <div class="d-flex">
+                    <a href="<%=edit_konto_klasa_url(klasa) %>"><span class="fa fa-eye mr-2"></span></a>
+                    <% if klasa.user==current_user%>
+                    <form action="<%= konto_klasa_url(klasa) %>" method="POST">
+                    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="bg-transparent" style="border:none">
+                    <span class="fa fa-trash"></span>
+                    </button>
+                    </form>
+                    <%end%>
+                    </div>
+                    </td>
+                    </tr>
+                    
+                <%end %>
+            </tbody>
+            <tfoot>
+                <tr>
+                <%@nazivi_kolona.each do |kolona| %>
+                <th> <%=kolona %></th>
+                <%end %>
+                <th>Opcije</th>
+                </tr>
+            </tfoot>
+        </table>
+        </div>
+             <a href="<%=new_konto_klasa_url%>" class="btn btn-primary mt-3 kreiraj-link" >Kreiraj novu Klasu</a> 
     </div>
-    <a href="<%=new_konto_klasa_url%>" class="btn btn-primary mt-3" >Kreiraj novu Klasu</a>
+
+
+
+     <!--Kreiranje novog objekta -->
+
+    <div class="new display-none">
+            <div class="col-lg-6 col-md-8">
+                <h2 class="text-center">Kreiraj novu klasu</h2>
+                <form action="/konto_klasas" method="POST">
+                <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                <div class="form-group">
+                <label for="naziv">Naziv</label>
+                <input type="text" name="klasa[naziv]" id="naziv" class="form-control">
+                </div>
+                <div class="form-group">
+                <label for="klasa">Klasa</label>
+                <input type="number" name="klasa[klasa]" id="klasa" class="form-control">
+                </div>
+                <div class="form-group">
+                <label for="bilans">Bilans</label>
+                <input type="text" name="klasa[bilans]" id="bilans" class="form-control">
+                </div>
+                <div class="form-group">
+                <label for="aktivnost">Aktivnost</label>
+                <input type="text" name="klasa[aktivnost]" id="aktivnost" class="form-control">
+                </div>
+                <div class="d-flex justify-content-between">
+                <a href="/konto_klasas" class="btn btn-danger"> Natrag</a>
+                <button type="submit" class="btn btn-primary">Kreiraj</button>
+                </div>
+                </form>
+            </div>
+    </div>
+
+    <!--Konfigurisanje date strane uz pomoc konfiga -->
+    <div class="config-stranica display-none">
+        <form action="/konto_klasas_konifgurisi" method="POST">
+        <input type="hidden" name="_method" value="PATCH">
+        <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+        <div class="mb-3">Izberite da li zelite da ucitatate sve podatke iz baze</div>
+        <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="radio1" name="radios" value="podaic_baza" <%="checked" if !current_user.resetuj_konto1_klasu%> >
+        <label class="form-check-label" for="radio1">Učitaj podatke iz baze</label>
+        </div>
+        <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="radio2" name="radios" value="svoji_podaci" <%="checked" if current_user.resetuj_konto1_klasu%>>
+        <label class="form-check-label" for="radio2">Koristi samo svoje podatke</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Potvrdi</button>
+        </form>
+    
+    </div>
+  
+
+
+

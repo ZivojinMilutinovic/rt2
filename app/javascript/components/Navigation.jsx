@@ -16,8 +16,10 @@ const NavigationNonAuth=(props)=>(<Nav >
 class Navigation extends Component {
     constructor(props){
         super(props);
-       
+        this.win=null;
+        this.izlogujSe=this.izlogujSe.bind(this);
     }
+    
     izlogujSe(){
         const token=document.querySelector('meta[name="csrf-token"]').content;
         fetch("/session",{
@@ -31,10 +33,14 @@ class Navigation extends Component {
                 throw new Error("Network response was not OK");
             }
             else{
-             window.location.href="/";
+                
+          this.win.location.href="/";
+
             }
-        }).catch(error=>console.log(error.message))
-        
+        }).catch(error=>console.log(error.message))        
+    }
+    componentDidMount(){
+        this.win=window;
     }
     render() { 
         return ( <Navbar className="mb-5" bg="light" variant="light" expand="lg">
@@ -44,7 +50,7 @@ class Navigation extends Component {
             <Nav className="mr-auto">
             <Nav.Link href="/kontrolni_broj">Kontrolni broj</Nav.Link>
             <NavDropdown title="Kontni okvir" id="basic-nav-dropdown">
-            <NavDropdown.Item href="/konto_klasas">Konto1 Klasa</NavDropdown.Item>
+            <NavDropdown.Item href="/konto_klasas" >Konto1 Klasa</NavDropdown.Item>
             <NavDropdown.Item href="/konto_grupas">Konto2 Grupa</NavDropdown.Item>
             <NavDropdown.Item href="/konto_sintetikas">Konto3 Sintetika</NavDropdown.Item>
             <NavDropdown.Item href="/konto_objektas">Konto4 Objekti prometa</NavDropdown.Item>
@@ -56,6 +62,15 @@ class Navigation extends Component {
             <Nav.Link href="/robas">Robe</Nav.Link>
             <Nav.Link href="/tip_robes">Tip robe</Nav.Link>
             <Nav.Link href="/magacinis">Magacini</Nav.Link>
+            <Nav.Link href="/jedinice_mere">Jedinice mere</Nav.Link>
+
+             <NavDropdown title="Menu 2" id="basic-nav-dropdown">
+            <NavDropdown.Item href="/oznaka_objekta_prometas" >Oznaka objekta prometa</NavDropdown.Item>
+            <NavDropdown.Item href="/promena_tips">Promena tip</NavDropdown.Item>
+            <NavDropdown.Item href="/promenes">Promene</NavDropdown.Item>
+            <NavDropdown.Item href="/promet_dokumentas">Promet dokumenta</NavDropdown.Item>
+            <NavDropdown.Item href="/transakcijes">Transakcije</NavDropdown.Item>
+            </NavDropdown>
             </Nav>
             <Nav>
              {this.props.current_user==null ? <NavigationAuth /> : <NavigationNonAuth username={this.props.current_user} izlogujSe={this.izlogujSe} />}  

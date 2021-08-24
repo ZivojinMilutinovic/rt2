@@ -3,7 +3,6 @@ class User < ApplicationRecord
     before_validation :ensure_session_token
     validates :username,:email,:password_digest,presence:{message:"moraju biti prisutni"}
     validates :password,length:{minimum:6,allow_nil:true}
-
     ###
     #asocijacije
     has_many :konto_klase,class_name:"Konto1Klasa",primary_key: :id,foreign_key: :user_id,dependent: :destroy
@@ -17,12 +16,13 @@ class User < ApplicationRecord
     has_many :robe,class_name:"Robas",primary_key: :id,foreign_key: :user_id,dependent: :destroy
     has_many :tip_robe,class_name:"TipRobe",primary_key: :id,foreign_key: :user_id,dependent: :destroy
     has_many :magacini,class_name:"Magacini",primary_key: :id,foreign_key: :user_id,dependent: :destroy
-
-
-
+    has_many :oznaka_objekta_prometa,class_name:"OznakaObjektaPrometas",primary_key: :id,foreign_key: :user_id,dependent: :destroy
+    has_many :promena_tips,class_name:"PromenaTip",primary_key: :id,foreign_key: :user_id,dependent: :destroy
+    has_many :promene,class_name:"Promene",primary_key: :id,foreign_key: :user_id,dependent: :destroy
+    has_many :promet_dokumenta,class_name:"PrometDokumentas",primary_key: :id,foreign_key: :user_id,dependent: :destroy
+    has_many :transakcije,class_name:"Transakcije",primary_key: :id,foreign_key: :user_id,dependent: :destroy
+    has_many :transakcije_grupe,class_name:"TransakcijeGrupe",primary_key: :id,foreign_key: :user_id,dependent: :destroy
     ###
-
-
     def self.find_by_credientials(username,password)
         user=User.find_by(username:username)
         return nil if user.nil?
@@ -31,6 +31,7 @@ class User < ApplicationRecord
     def is_password?(password)
         BCrypt::Password.new(self.password_digest).is_password?(password)
     end
+    #mi ne cuvamo password u bazi samo password digest koristeci BCrypt
     def password=(password)
         @password=password
         self.password_digest=BCrypt::Password.create(password)
@@ -44,6 +45,7 @@ class User < ApplicationRecord
         self.session_token
     end
     private
+    #generisanje session tokena pre kreiranja korisnika
     def ensure_session_token
         self.session_token||=self.class.generate_session_token
     end

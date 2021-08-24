@@ -23,11 +23,16 @@ class PagesController < ApplicationController
                 path="https://api.kursna-lista.info/#{ENV["KURSNA_LISTA_API_KEY"]}/kl_na_dan/#{date.strftime("%d.%m.%Y")}"
              end
         end       
-        @devize=Deviza.all
+        @devize=Deviza.all.limit(5)
         @nazivi_kolona=Deviza::NAZIVI_KOLONA
         response=Faraday.get path
         @data=JSON.parse(response.body)["result"]
         render :kursna_lista
+    end
+    def jedinice_mere
+        @nazivi_kolona=JedinicaMere::NAZIVI_KOLONA
+        @jedinice_mere=JedinicaMere.all
+        render :jedinice_mere
     end
     def profile_page
         render :profile_page

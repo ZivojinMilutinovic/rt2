@@ -5,6 +5,8 @@ class UsersController < ApplicationController
     def create
         user=User.new(users_params)
         if user.save
+            # msg=UserMailer.welcome_email(u)
+            # msg.deliver_now
             login!(user)
             redirect_to '/'
         else

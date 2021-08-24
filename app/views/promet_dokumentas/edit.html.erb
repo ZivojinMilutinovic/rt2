@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+<div class="col-lg-7 col-md-9 ">
+    <h2 class="text-center">Kreiraj novu poresku tarifu</h2>
+    <form action="<%= promet_dokumenta_url(@promet_dokumenta) %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <input type="hidden" name="_method" value="PATCH">
+     <input type="hidden" name="id" value="<%=@promet_dokumenta.id%>">
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="nalog_gk">Nalog gk:</label>
+    <input type="number" name="promet_dokumenta[nalog_gk]" id="nalog_gk" class="form-control" value="<%=@promet_dokumenta.nalog_gk%>">
+    </div>
+    <div class="form-group col  ml-1">
+    <label for="dokument">Dokument:</label>
+    <input type="text" name="promet_dokumenta[dokument]" id="dokument" class="form-control" value="<%=@promet_dokumenta.dokument%>">
+    </div>
+    </div>
+    
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="izdavalac_imenilac">Izdavalac Imenilac:</label>
+    <input type="text" name="promet_dokumenta[izdavalac_imenilac]" id="izdavalac_imenilac" class="form-control" value="<%=@promet_dokumenta.izdavalac_imenilac%>">
+    </div>
+    <div class="form-group col  ml-1">
+    <label for="broj_oznaka_period">Broj oznaka period:</label>
+    <input type="text" name="promet_dokumenta[broj_oznaka_period]" id="broj_oznaka_period" class="form-control" value="<%=@promet_dokumenta.broj_oznaka_period%>">
+    </div>
+    </div>
+
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="iznos_bruto">Iznos bruto:</label>
+    <input type="text" name="promet_dokumenta[iznos_bruto]" id="iznos_bruto" class="form-control" value="<%=@promet_dokumenta.iznos_bruto%>">
+    </div>
+    <div class="form-group col  ml-1">
+    <label for="korekcija">Korekcija:</label>
+    <input type="text" name="promet_dokumenta[korekcija]" id="korekcija" class="form-control" value="<%=@promet_dokumenta.korekcija%>">
+    </div>
+    </div>
+  
+    <div class="form-group ">
+    <label for="datum_prometa">Datum prometa:</label>
+    <input type="date" name="promet_dokumenta[datum_prometa]" id="datum_prometa" class="form-control"
+     value="<%=@promet_dokumenta.datum_prometa.strftime("%Y-%m-%d") if @promet_dokumenta.datum_prometa%>">
+    </div>
+
+    <div class="d-flex justify-content-between">
+    <a href="/promet_dokumentas" class="btn btn-danger"> Natrag</a>
+   <button type="submit" <%="disabled" if !(@promet_dokumenta.user==current_user) %>
+     class="btn btn-primary">Azuriraj</button>
+    </div>
+    </form>
+</div>
+</div>

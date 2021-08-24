@@ -1,0 +1,51 @@
+
+<h1 class="text-center mb-3">Promet Dokumenta</h1>
+<div class="table-responsive">
+<table  class="<%=table_classes %>">
+        <thead>
+            <tr>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            <th>Opcije</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @promet_dokumenta.each do |pr| %>
+                <tr>
+                <td><%=pr.id %></td>
+                <td><%=pr.nalog_gk %></td>
+                <td><%=pr.dokument %></td>
+                <td><%=pr.izdavalac_imenilac %></td>
+                <td><%=pr.broj_oznaka_period %></td>
+                <td><%=date_time(pr.datum_prometa) %></td>
+                <td><%=pr.iznos_bruto %></td>
+                <td><%=pr.korekcija %></td>
+                <td>
+                <div class="d-flex">
+                <a href="<%= edit_promet_dokumenta_url(pr) %>"><span class="fa fa-eye mr-2"></span></a>
+                <% if pr.user==current_user%>
+                <form action="<%= promet_dokumenta_url(pr) %>" method="POST">
+                <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="bg-transparent" style="border:none">
+                <span class="fa fa-trash"></span>
+                </button>
+                </form>
+                <%end%>
+                </div>
+                </td>
+                </tr>
+            <%end %>
+        </tbody>
+        <tfoot>
+            <tr>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            <th>Opcije</th>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+    <a href="<%= new_promet_dokumenta_url %>" class="btn btn-primary mt-3" >Kreiraj novi Promet Dokumenta</a>

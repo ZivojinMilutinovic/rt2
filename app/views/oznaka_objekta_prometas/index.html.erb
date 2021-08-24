@@ -1,0 +1,47 @@
+
+<h1 class="text-center mb-3">Oznaka objekta promene</h1>
+<div class="table-responsive">
+<table  class="<%=table_classes %>">
+        <thead>
+            <tr>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            <th>Opcije</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @oznake_prometa.each do |oznaka| %>
+                <tr>
+                <td><%=oznaka.id %></td>
+                <td><%=oznaka.naziv_oznake %></td>
+                <td><%=oznaka.oznaka %></td>
+               
+                <td>
+                <div class="d-flex">
+                <a href="<%=edit_oznaka_objekta_prometa_url(oznaka) %>"><span class="fa fa-eye mr-2"></span></a>
+                <% if oznaka.user==current_user%>
+                <form action="<%= oznaka_objekta_prometa_url(oznaka) %>" method="POST">
+                <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="bg-transparent" style="border:none">
+                <span class="fa fa-trash"></span>
+                </button>
+                </form>
+                <%end%>
+                </div>
+                </td>
+                </tr>
+            <%end %>
+        </tbody>
+        <tfoot>
+            <tr>
+            <%@nazivi_kolona.each do |kolona| %>
+            <th> <%=kolona %></th>
+            <%end %>
+            <th>Opcije</th>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+    <a href="<%=new_oznaka_objekta_prometa_url%>" class="btn btn-primary mt-3" >Kreiraj novu oznaku objekta prometa</a>

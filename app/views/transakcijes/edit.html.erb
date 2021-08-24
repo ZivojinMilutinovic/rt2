@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+<div class="col-lg-7 col-md-9 ">
+    <h2 class="text-center">Kreiraj novi tip promene</h2>
+    <form action="<%= transakcije_url(@transakcije) %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <input type="hidden" name="id" value="<%=@transakcije.id%>">
+    <input type="hidden" name="_method" value="PATCH">
+
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="r_br">Redni broj:</label>
+    <input type="number" name="transakcije[r_br]" id="r_br" class="form-control" value="<%=@transakcije.r_br%>">
+    </div>
+    <div class="form-group col  ml-1">
+    <label for="grupa">Grupa:</label>
+    <input type="text" name="transakcije[grupa]" id="grupa" class="form-control" value="<%=@transakcije.grupa%>">
+    </div>
+    </div>
+
+    
+    <div class="form-group">
+          <label for="naziv">Naziv:</label>
+                <input type="text" name="transakcije[naziv]" id="naziv" class="form-control" value="<%=@transakcije.naziv%>">
+                 <div class="form-check form-check-inline mt-2 ">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="true" name="transakcije[oporezivo]"
+                 <%= "checked" if @transakcije.oporezivo %>>
+                <label class="form-check-label" for="inlineCheckbox2">Oporezivo</label>
+                 </div>
+    </div>
+
+    <div class="d-flex justify-content-between">
+    <a href="/transakcijes" class="btn btn-danger"> Natrag</a>
+   <button type="submit" <%="disabled" if !(@transakcije.user==current_user) %>
+     class="btn btn-primary">Azuriraj</button>
+    </div>
+    </form>
+</div>
+</div>

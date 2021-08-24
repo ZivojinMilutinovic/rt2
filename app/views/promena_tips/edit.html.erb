@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+<div class="col-lg-7 col-md-9 ">
+    <h2 class="text-center">Kreiraj novu poresku tarifu</h2>
+    <form action="<%=promena_tip_url(@promena_tip) %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <input type="hidden" name="id" value="<%=@promena_tip.id%>">
+   <input type="hidden" name="_method" value="PATCH">
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="transakcija">Transakcija:</label>
+    <input type="number" name="promena_tip[transakcija]" id="transakcija" class="form-control" value="<%=@promena_tip.transakcija%>">
+    </div>
+    <div class="form-group col  ml-1">
+    <label for="naziv">Naziv:</label>
+    <input type="text" name="promena_tip[naziv_promene_tip]" id="naziv" class="form-control" value="<%=@promena_tip.naziv_promene_tip%>">
+    </div>
+    </div>
+   
+    
+    
+    <div class="form-row">
+    <div class="form-group col mr-1">
+    <label for="zaduzenje_labela">Zaduženje labela:</label>
+    <input type="text" name="promena_tip[zaduzenje_labela]" id="zaduzenje_labela" class="form-control" value="<%=@promena_tip.zaduzenje_labela%>">
+    </div>
+    <div class="form-group col ml-1">
+    <label for="odobrenje_labela">Odobrenje labela:</label>
+    <input type="text" name="promena_tip[odobrenje_labela]" id="odobrenje_labela" class="form-control" value="<%=@promena_tip.odobrenje_labela%>">
+    </div>
+    </div>
+    <div class="form-group">
+    <label for="analitika_vise_objekta">Analitika više objekata:</label>
+    <input type="text" name="promena_tip[analitika_vise_objekta]" id="analitika_vise_objekta" class="form-control" value="<%=@promena_tip.analitika_vise_objekta%>">
+    </div>
+    <div class="form-row">
+            <div class="form-check form-check-inline mb-5">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="true" name="promena_tip[dupli_stav]"
+            <%= "checked" if @promena_tip.dupli_stav %>>
+            <label class="form-check-label" for="inlineCheckbox1">Dupli stav</label>
+            </div>
+             <div class="form-check form-check-inline mb-5">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="true" name="promena_tip[pdv_odbitak]"
+            <%= "checked" if @promena_tip.pdv_odbitak %>>
+            <label class="form-check-label" for="inlineCheckbox2">Pdv odbitak</label>
+            </div>
+             <div class="form-check form-check-inline mb-5">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="true" name="promena_tip[oporezivo_pdv]"
+            <%= "checked" if @promena_tip.oporezivo_pdv %>>
+            <label class="form-check-label" for="inlineCheckbox3">Oporezivo pdv</label>
+            </div>
+             <div class="form-check form-check-inline mb-5">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="true" name="promena_tip[set_transakcija]"
+            <%= "checked" if @promena_tip.set_transakcija %>>
+            <label class="form-check-label" for="inlineCheckbox4">Set transakcija</label>
+            </div>
+    </div>
+    <div class="d-flex justify-content-between">
+    <a href="/promena_tips" class="btn btn-danger"> Natrag</a>
+    <button type="submit" <%="disabled" if !(@promena_tip.user==current_user) %>
+     class="btn btn-primary">Azuriraj</button>
+    </div>
+    </form>
+</div>
+</div>
